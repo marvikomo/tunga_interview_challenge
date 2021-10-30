@@ -15,6 +15,5 @@ class ProcessJSON implements ProcessInterface {
         foreach ($chunks as $key => $chunk){
             $batch->add(new UploadFile($chunk));
         }
-
     }
 }
