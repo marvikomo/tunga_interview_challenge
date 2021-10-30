@@ -19,26 +19,18 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'address',
+        'checked',
+        'interest',
+        'description',
+        'date_of_birth',
         'email',
-        'password',
+        'account'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function CreditCard()
+    {
+        return $this->hasMany('App\Models\CreditCard','user_id','id');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
