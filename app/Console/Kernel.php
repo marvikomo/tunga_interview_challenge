@@ -24,7 +24,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function (){
+            $jobs = DB::table('failed_jobs')->get();
+
+            foreach ($jobs as $job) {
+                Artisan::call('queue:retry '.$job->uuid);
+            }
+        })->everyMinute();
     }
 
     /**
