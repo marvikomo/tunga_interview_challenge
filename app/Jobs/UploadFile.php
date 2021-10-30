@@ -37,6 +37,7 @@ class UploadFile implements ShouldQueue
         $date_lib = new DateLib();
         foreach ($this->data as $key =>  $value){
             $credit_card = $value['credit_card'];
+            //credit card data can be filtered before saving
             unset($value['credit_card']);
             $date = $date_lib->covertToTime($value['date_of_birth']);
             $age = $date_lib->getAge($date);
