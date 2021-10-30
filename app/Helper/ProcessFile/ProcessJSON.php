@@ -8,7 +8,7 @@ class ProcessJSON implements ProcessInterface {
 
     public function process($file)
     {
-        //broke large files into chunks before dispatching
+        //broke large files into chunks before batching
         $file_data = json_decode(file_get_contents($file), true);
         $chunks = array_chunk($file_data, 1000);
         $batch = Bus::batch([])->dispatch();
