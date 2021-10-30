@@ -2,9 +2,11 @@
 namespace App\Helper\ProcessFile;
 
 class ProcessFactory{
-    public function initialize(string $type){
+    public function initialize(string $type=''){
         switch ($type){
-            case 'csv':
+            case 'json':
+                return new ProcessJSON();
+            default:
                 return new ProcessJSON();
         }
     }
