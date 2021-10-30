@@ -6,6 +6,7 @@
 - Make a copy of .env from .env.copy
 - Do Run database migration - `php artisan migrate`
 - Start the server php artisan serve 
+- Test the app by running - `php artisan test`
 
 
 ####Solution Approach
