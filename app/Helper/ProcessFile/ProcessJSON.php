@@ -5,6 +5,6 @@ class ProcessJSON implements ProcessInterface {
 
     public function process($file)
     {
-        // TODO: Implement process() method.
+        $file_data = json_decode(file_get_contents($file), true);
     }
 }
