@@ -13,7 +13,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class UploadFile implements ShouldQueue
+class UploadFile implements ShouldQueue, ShouldBeUnique
 {
     use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     public $data;
@@ -48,5 +48,6 @@ class UploadFile implements ShouldQueue
             }
 
         }
+
     }
 }
