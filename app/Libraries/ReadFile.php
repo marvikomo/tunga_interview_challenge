@@ -2,7 +2,8 @@
 namespace App\Libraries;
 
 class ReadFile{
-    public function read(){
-
+    public static function getFileType($file){
+        $e = explode('.',$file);
+        return end($e);
     }
 }
