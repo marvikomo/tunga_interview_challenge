@@ -34,20 +34,19 @@ class UploadFile implements ShouldQueue, ShouldBeUnique
      */
     public function handle()
     {
-        $date_lib = new DateLib();
         foreach ($this->data as $key =>  $value){
+            $value = (array) $value;
             $credit_card = $value['credit_card'];
             //credit card data can be filtered before saving
             unset($value['credit_card']);
-            $date = $date_lib->covertToTime($value['date_of_birth']);
-            $age = $date_lib->getAge($date);
-            if($age === 18 || $age === 65 || !$age ){
+            $date = DateLib::covertToTime($value['date_of_birth']);
+            $age = DateLib::getAge($date);
+            if(DateLib::ageFilter($age)){
                 $save_user = User::Create($value);
-                $credit_cards = new CreditCard($credit_card);
+                $credit_cards = new CreditCard((array)$credit_card);
                 $save_user->CreditCard()->save($credit_cards);
             }
 
         }
-
     }
 }
