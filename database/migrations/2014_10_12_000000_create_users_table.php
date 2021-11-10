@@ -17,12 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->string('checked');
+            $table->boolean('checked');
             $table->string('interest')->nullable();
             $table->text('description');
             $table->string('date_of_birth')->nullable();
             $table->string('email');
             $table->string('account');
+            $table->integer('job_id');
+            $table->integer('keys');
             $table->timestamps();
         });
     }

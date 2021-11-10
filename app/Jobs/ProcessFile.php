@@ -15,6 +15,7 @@ class ProcessFile implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     public $data;
     public $file_type;
+    const CHUNK_SIZE = 1000;
     /**
      * Create a new job instance.
      *
@@ -42,12 +43,11 @@ class ProcessFile implements ShouldQueue
                 $batch->add(new UploadFile($this->data));
                 exit;
             }
-            if(count($this->data) >  1000){
+            if(count($this->data) >  ProcessFile::CHUNK_SIZE){
                 $batch->add(new UploadFile($this->data));
                 $this->data = [];
             }
             array_push($this->data,$item);
         }
-
     }
 }

@@ -4,7 +4,7 @@ namespace App\Libraries;
 use Carbon\Carbon;
 
 class DateLib{
-    public static function covertToTime($date){
+    public static function covertToTimeString($date){
         $a = str_replace("/", "-", $date);;
         return strtotime($a);
     }

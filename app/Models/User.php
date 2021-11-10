@@ -25,7 +25,9 @@ class User extends Authenticatable
         'description',
         'date_of_birth',
         'email',
-        'account'
+        'account',
+        'job_id',
+        'keys'
     ];
 
     public function CreditCard()
